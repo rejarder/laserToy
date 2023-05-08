@@ -32,7 +32,7 @@ msgRead = I2C.Message(dataRX,read=True)
 msgs = [msgWritePointer, msgRead]
 
 # call transfer function 
-i2c.transfer(0x51, msgs)
+i2c.transfer(0x40, msgs)
 
 # print received bytes
 for i in range(0,len(msgs[1].data)):
