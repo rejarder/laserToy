@@ -1,7 +1,7 @@
 from periphery import I2C
 
 # Open i2c-0 controller
-i2c = I2C("/dev/i2c-0")
+i2c = I2C("/dev/i2c-1")
 
 # Read byte at address 0x100 of EEPROM at 0x50
 msgs = [I2C.Message([0x01, 0x00]), I2C.Message([0x00], read=True)]
