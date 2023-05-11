@@ -48,4 +48,7 @@ for n,channel in enumerate(pca.channels):
 pca.frequency = 60
 
 for x, channel in enumerate(pca.channels):
-    pca.channels[x].duty_cycle = 0x7FFF
+    try:
+        pca.channels[x].duty_cycle = 0x7FFF
+    except:
+        print(f'moving channel{x} failed')
