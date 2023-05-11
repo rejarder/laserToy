@@ -35,7 +35,8 @@ print('i2c devices',devices)
 
 # for x,device in enumerate(devices):
 #     try:
-pca = PCA9685(i2c,address=0x68)
+hex = 0x68
+pca = PCA9685(i2c,address=hex)
 
 for n,channel in enumerate(pca.channels):
     serv = servo.Servo(pca.channels[n])
@@ -44,5 +45,7 @@ for n,channel in enumerate(pca.channels):
     #     print(f'errored out with device {device}')
 
 # pca = PCA9685(i2c, address = 0x68)
-# pca.frequency = 60
-# pca.channels[0].duty_cycle = 0x7FFF
+pca.frequency = 60
+
+for x, channel in enumerate(pca.channels):
+    pca.channels[x].duty_cycle = 0x7FFF
