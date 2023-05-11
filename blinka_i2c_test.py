@@ -33,15 +33,15 @@ i2c = busio.I2C(SCL, SDA)
 devices = [hex(i) for i in i2c.scan()]
 print('i2c devices',devices)
 
-for x,device in enumerate(devices):
-    try:
-        pca = PCA9685(i2c,address=device)
+# for x,device in enumerate(devices):
+#     try:
+pca = PCA9685(i2c,address=0x0)
 
-        for n,channel in enumerate(pca.channels):
-            serv = servo.Servo(pca.channels[n])
-            print(f'channel {n} - {serv.angle}')
-    except:
-        print(f'errored out with device {device}')
+for n,channel in enumerate(pca.channels):
+    serv = servo.Servo(pca.channels[n])
+    print(f'channel {n} - {serv.angle}')
+    # except:
+    #     print(f'errored out with device {device}')
 
 # pca = PCA9685(i2c, address = 0x68)
 # pca.frequency = 60
