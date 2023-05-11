@@ -35,7 +35,7 @@ print('i2c devices',devices)
 
 # for x,device in enumerate(devices):
 #     try:
-hex = 0x68
+hex = 0x40#0x68
 pca = PCA9685(i2c,address=hex)
 
 for n,channel in enumerate(pca.channels):
