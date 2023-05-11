@@ -34,8 +34,8 @@ print('i2c scan',i2c.scan())
 pca = PCA9685(i2c,address=0x68)
 
 for n,channel in enumerate(pca.channels):
-    servo = servo.Servo(pca.channels[n])
-    print(f'channel {n} - {servo.angle}')
+    serv = servo.Servo(pca.channels[n])
+    print(f'channel {n} - {serv.angle}')
 
 # pca = PCA9685(i2c, address = 0x68)
 # pca.frequency = 60
