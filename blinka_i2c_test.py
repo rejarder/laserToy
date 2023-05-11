@@ -24,10 +24,18 @@
 # pca.channels[0].duty_cycle = 0x7FFF
 
 
-from board import SCL_1, SDA_1
+from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
 
 from adafruit_motor import servo
-i2c = busio.I2C(SCL_1, SDA_1)
-pca = PCA9685(i2c, address = 0x40)
+i2c = busio.I2C(SCL, SDA)
+i2c.scan()
+
+for n,channel in enumerate(pca.channels):
+    servo = servo.Servo(channel)
+    print(f'channel {n} - {servo.angle}')
+
+# pca = PCA9685(i2c, address = 0x68)
+# pca.frequency = 60
+# pca.channels[0].duty_cycle = 0x7FFF
