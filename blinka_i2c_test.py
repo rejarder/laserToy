@@ -35,7 +35,7 @@ print('i2c devices',devices)
 
 # for x,device in enumerate(devices):
 #     try:
-pca = PCA9685(i2c,address=0x0)
+pca = PCA9685(i2c,address=0x68)
 
 for n,channel in enumerate(pca.channels):
     serv = servo.Servo(pca.channels[n])
