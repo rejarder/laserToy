@@ -27,15 +27,21 @@
 from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
-
 from adafruit_motor import servo
-i2c = busio.I2C(SCL, SDA)
-print('i2c devices',[hex(i) for i in i2c.scan()])
-pca = PCA9685(i2c,address=0x0)
 
-for n,channel in enumerate(pca.channels):
-    serv = servo.Servo(pca.channels[n])
-    print(f'channel {n} - {serv.angle}')
+i2c = busio.I2C(SCL, SDA)
+devices = [hex(i) for i in i2c.scan()]
+print('i2c devices',devices)
+
+for x,device in enumerate(devices):
+    try:
+        pca = PCA9685(i2c,address=device)
+
+        for n,channel in enumerate(pca.channels):
+            serv = servo.Servo(pca.channels[n])
+            print(f'channel {n} - {serv.angle}')
+    except:
+        pass
 
 # pca = PCA9685(i2c, address = 0x68)
 # pca.frequency = 60
