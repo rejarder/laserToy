@@ -30,7 +30,8 @@ from adafruit_pca9685 import PCA9685
 
 from adafruit_motor import servo
 i2c = busio.I2C(SCL, SDA)
-i2c.scan()
+print('i2c scan',i2c.scan())
+pca = PCA9685(i2c,address=0x68)
 
 for n,channel in enumerate(pca.channels):
     servo = servo.Servo(channel)
