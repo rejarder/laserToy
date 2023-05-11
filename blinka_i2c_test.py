@@ -41,7 +41,7 @@ for x,device in enumerate(devices):
             serv = servo.Servo(pca.channels[n])
             print(f'channel {n} - {serv.angle}')
     except:
-        pass
+        print(f'errored out with device {device}')
 
 # pca = PCA9685(i2c, address = 0x68)
 # pca.frequency = 60
